@@ -8,7 +8,7 @@ buffer = 3
 max_seats = num_of_columns * num_of_rows
 avail_seats = max_seats
 rows = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
-    
+#Function to check if request can be accomodated   
 def canBeAccomodated(req_seats, occupied_seats):
     if (occupied_seats == 0):
         return True
@@ -34,7 +34,7 @@ def getRow(idx):
   
     return switcher.get(idx, "X")
     
-
+#Function to update available seats
 def updateAvailableSeats(idx, req_seats):
     global avail_seats
     if rows[idx] + req_seats + buffer >= num_of_columns:
@@ -44,7 +44,7 @@ def updateAvailableSeats(idx, req_seats):
         rows[idx] = rows[idx] + req_seats + buffer
         avail_seats = avail_seats - (req_seats + buffer)
         
-        
+#Function to break and accomodate incase continuous allocation is not possible        
 def breakAndAccomodate(req_seats):
     seat_list = []
     current_req_seats = req_seats
